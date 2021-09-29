@@ -7,24 +7,26 @@
 
 p {
   margin: 0 0 8px 0;
-  &.title{
+
+  &.title {
     margin-bottom: 4px;
     font-weight: bold;
     font-size: 14px;
     color: lightslategray;
   }
-  &.subtitle{
+
+  &.subtitle {
     margin-bottom: 16px;
     font-size: 16px;
     color: darkslategrey;
   }
 }
 
-.text-left{
+.text-left {
   text-align: left;
 }
 
-.rating-badge{
+.rating-badge {
   padding: 4px;
   font-size: 12px;
   border-radius: 100px;
@@ -49,9 +51,11 @@ p {
 .flex-col {
   flex-direction: column;
 }
-.flex-wrap{
+
+.flex-wrap {
   flex-wrap: wrap;
 }
+
 .align-items-center {
   align-items: center;
 }
@@ -75,14 +79,16 @@ p {
 .mb-8 {
   margin-bottom: 0.5rem;
 }
-.mr-8{
+
+.mr-8 {
   margin-right: 0.5rem;
 }
-.d-none{
+
+.d-none {
   display: none;
 }
 
-.d-show{
+.d-show {
   display: block;
 }
 
@@ -106,12 +112,13 @@ p {
   }
 }
 
-.icon-btn{
+.icon-btn {
   background: none;
   border: none;
   font-weight: bold;
   color: darkslategrey;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 }
@@ -142,14 +149,23 @@ img.movie-poster {
   }
 }
 
+//for device smaller or equal to 768px
 @media only screen and (max-device-width: 768px) {
-  .btn-cta{
+  .btn-cta {
     margin-top: 16px;
     width: 100%;
   }
-  .w-mobile-100{
+  .w-mobile-100 {
     width: 100%;
     margin-bottom: 10px;
     margin-right: 0;
+  }
+}
+
+//for device larger than 1440px
+@media only screen and (min-device-width: 768px) {
+  .container {
+    max-width: 80%;
+    margin: 2rem 10rem;
   }
 }
