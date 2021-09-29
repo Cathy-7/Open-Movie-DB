@@ -1,11 +1,11 @@
 <div class="container">
-<h1>Open Movie Database Search</h1>
-<p>Your one stop location for all the movie information</p>
+  <h1>Open Movie Database Search</h1>
+  <p>Your one stop location for all the movie information</p>
 
-<hr/>
+  <hr/>
 
-<p>Search by movie title or id and/or year</p>
-<br>
+  <p>Search by movie title or id and/or year</p>
+  <br>
 
 
   <!--Search-->
@@ -36,7 +36,15 @@
   </form>
 
   <!--Results-->
-  <div *ngIf="data">
+  <div *ngIf="errorMessage">
+    <div class="d-flex flex-col align-items-center justify-contents-center bg-light mt-8 p-20">
+      <i class="fa fa-chain-broken font-size-56 mb-8" aria-hidden="true"></i>
+      <p>Sorry, we're encountered an error {{errorMessage}}
+        Please try again.
+      </p>
+    </div>
+  </div>
+  <div *ngIf="data && !errorMessage">
     <h2>{{data?.Title}}</h2>
     <p class="subtitle">{{data?.Released}} | {{data?.Rated}} | {{data?.Runtime}}</p>
 

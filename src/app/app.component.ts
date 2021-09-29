@@ -7,8 +7,8 @@ import {OpenMovieDbService} from "./service/open-movie-db.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'untitled';
   data: any;
+  errorMessage: string = '';
 
   searchByTitle: string = '';
   searchByYear: string = '';
@@ -16,17 +16,20 @@ export class AppComponent {
 
   showMoreDetails = false;
   constructor(private openMovieDbService: OpenMovieDbService) {
-    // openMovieDbService.getMovieDetails('H').then(result => {
-    //   this.data = result;
-    //   console.log(this.data)
-    // })
   }
 
   searchMovie() {
-    console.log(this.searchByTitle)
     this.openMovieDbService.getMovieDetails(this.searchByTitle, this.searchByYear, this.searchById).then(result => {
-      this.data = result;
-      console.log(this.data)
+      console.log(result)
+      if(result.Response === 'False'){
+        this.data = {}
+        this.errorMessage = result.Error;
+        console.log(result.Response)
+      }else{
+        this.errorMessage = '';
+        this.data = result;
+        console.log(this.data)
+      }
     })
   }
 

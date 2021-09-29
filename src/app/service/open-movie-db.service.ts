@@ -22,7 +22,5 @@ export class OpenMovieDbService {
       apikey: '8c184d19'
     }))
       .then(response => response.json())
-    // console.log(data);
-    // return data
   }
 }
