@@ -3,38 +3,62 @@
 
 <hr/>
 
-<p>Search by movie title or id</p>
-<label for="searchByTitle">Title<span class="text-red">*</span></label>
-<input [(ngModel)]="searchByTitle" aria-label="Search by movie title" id="searchByTitle" name="searchByTitle"
-       type="search">
-<label for="searchById">Id</label>
-<input [(ngModel)]="searchById" aria-label="Search by movie title" id="searchById" name="searchById"
-       type="search">
-<label for="searchByYear">Year</label>
-<input [(ngModel)]="searchByYear" aria-label="Search by movie year" id="searchByYear" name="searchByYear"
-       type="search">
+<p>Search by movie title or id and/or year</p>
+<br>
 
-<button type=submit (click)="searchMovie()">Search</button>
+<form class="d-flex flex-row align-items-end justify-contents-center">
+  <div class="d-flex flex-col mr-16">
+    <label class="mb-8" for="searchByTitle">Title<span class="text-red">*</span></label>
+    <input [(ngModel)]="searchByTitle" aria-label="Search by movie title" id="searchByTitle" name="searchByTitle"
+           type="search"
+           placeholder="Enter title...">
+  </div>
+  <div class="d-flex flex-col mr-16">
+    <label class="mb-8" for="searchById">Id</label>
+    <input [(ngModel)]="searchById" aria-label="Search by movie title" id="searchById" name="searchById"
+           type="search"
+           placeholder="Enter id...">
+  </div>
+  <div class="d-flex flex-col">
+    <label class="mb-8" for="searchByYear">Year</label>
+    <input [(ngModel)]="searchByYear" aria-label="Search by movie year" id="searchByYear" name="searchByYear"
+           type="search"
+           placeholder="Enter year...">
+  </div>
 
-<!--{{data | json}}-->
-<div>
-  <img src="{{data?.Poster}}" alt="movie poster">
-  <p>{{data?.Title}}</p>
-  <p>{{data?.Released}}</p>
-  <p>{{data?.Rated}}</p>
-  <p>{{data?.Genre}}</p>
-  <p>{{data?.Runtime}}</p>
-  <p>{{data?.Language}}</p>
+  <button class="ml-auto btn-cta" type=submit value="submit" [disabled]="!searchByTitle && !searchById"
+          (click)="searchMovie()">
+    Search
+  </button>
+</form>
 
-<!--  rating-->
-  <p>{{data?.Metascore}}</p>
-  <p>{{data?.imdbRating}}</p>
-  <p>{{data?.imdbVotes}}</p>
-  <p>{{data?.Awards}}</p>
+<div *ngIf="data">
+  <h2>{{data?.Title}}</h2>
+  <p>{{data?.Released}} | {{data?.Rated}} | {{data?.Runtime}}</p>
+  <div class="d-flex flex-row">
+    <img class="movie-poster" src="{{data?.Poster}}" alt="movie poster">
+    <div class="d-flex flex-col">
+      <p>{{data?.Genre}}</p>
+      <p>{{data?.Language}}</p>
+    </div>
 
-<!--  More Information-->
-  <p>{{data?.Plot}}</p>
-  <p>{{data?.Actors}}</p>
-  <p>{{data?.Director}}</p>
-  <p>{{data?.Production}}</p>
+    <!--  rating-->
+    <p>{{data?.Metascore}}<i class="fa fa-star" aria-hidden="true"></i></p>
+    <p>{{data?.imdbRating}}</p>
+    <p>{{data?.imdbVotes}}</p>
+    <p>{{data?.Awards}}</p>
+
+    <!--  More Information-->
+    <button class='icon-btn' type="button" (click)="toggleMoreDetails()">
+      <i class="fa" [ngClass]="{
+    'fa-chevron-down': showMoreDetails === false,
+    'fa-chevron-up': showMoreDetails === true
+    }" aria-hidden="true"></i>
+    </button>
+
+    <p>{{data?.Plot}}</p>
+    <p>{{data?.Actors}}</p>
+    <p>{{data?.Director}}</p>
+    <p>{{data?.Production}}</p>
+  </div>
 </div>

@@ -14,6 +14,7 @@ export class AppComponent {
   searchByYear: string = '';
   searchById: string = '';
 
+  showMoreDetails = false;
   constructor(private openMovieDbService: OpenMovieDbService) {
     // openMovieDbService.getMovieDetails('H').then(result => {
     //   this.data = result;
@@ -25,7 +26,12 @@ export class AppComponent {
     console.log(this.searchByTitle)
     this.openMovieDbService.getMovieDetails(this.searchByTitle, this.searchByYear, this.searchById).then(result => {
       this.data = result;
+      console.log(this.data)
     })
+  }
+
+  toggleMoreDetails(){
+    this.showMoreDetails = !this.showMoreDetails;
   }
 
 }
