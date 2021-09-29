@@ -10,10 +10,7 @@ export class AppComponent {
   title = 'untitled';
   data: any;
 
-  //todo uncomment this
-  // searchByTitle: string = '';
-  searchByTitle: string = 'Marvel';
-
+  searchByTitle: string = '';
   searchByYear: string = '';
   searchById: string = '';
 
