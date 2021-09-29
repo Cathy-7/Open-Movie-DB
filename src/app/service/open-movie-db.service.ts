@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class OpenMovieDbService {
-  baseUrl = 'http://www.omdbapi.com/?'
+  baseUrl = 'https://www.omdbapi.com/?'
 
   constructor() {
   }
