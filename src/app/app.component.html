@@ -1,0 +1,40 @@
+<h1>Open Movie Database Search</h1>
+<p>Your one stop location for all the movie information</p>
+
+<hr/>
+
+<p>Search by movie title or id</p>
+<label for="searchByTitle">Title<span class="text-red">*</span></label>
+<input [(ngModel)]="searchByTitle" aria-label="Search by movie title" id="searchByTitle" name="searchByTitle"
+       type="search">
+<label for="searchById">Id</label>
+<input [(ngModel)]="searchById" aria-label="Search by movie title" id="searchById" name="searchById"
+       type="search">
+<label for="searchByYear">Year</label>
+<input [(ngModel)]="searchByYear" aria-label="Search by movie year" id="searchByYear" name="searchByYear"
+       type="search">
+
+<button type=submit (click)="searchMovie()">Search</button>
+
+<!--{{data | json}}-->
+<div>
+  <img src="{{data?.Poster}}" alt="movie poster">
+  <p>{{data?.Title}}</p>
+  <p>{{data?.Released}}</p>
+  <p>{{data?.Rated}}</p>
+  <p>{{data?.Genre}}</p>
+  <p>{{data?.Runtime}}</p>
+  <p>{{data?.Language}}</p>
+
+<!--  rating-->
+  <p>{{data?.Metascore}}</p>
+  <p>{{data?.imdbRating}}</p>
+  <p>{{data?.imdbVotes}}</p>
+  <p>{{data?.Awards}}</p>
+
+<!--  More Information-->
+  <p>{{data?.Plot}}</p>
+  <p>{{data?.Actors}}</p>
+  <p>{{data?.Director}}</p>
+  <p>{{data?.Production}}</p>
+</div>
